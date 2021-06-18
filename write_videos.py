@@ -26,14 +26,13 @@ def write_videos(data):
                 tags, default_language, made_for_kids, time)
                 VALUES
                 (%s, %s, %s, %s, %s, %s,
-                 %s, %s, %s, %s, %s, %s, %s, NOW(), );'''
+                 %s, %s, %s, %s, %s, %s, %s, NOW() );'''
         cursor.executemany(q, data)
     except Exception as error:
         print(error)
         # LOG
         return False
         # sys.exit("Error:Failed writing new videos to db")
-    cursor.execute()
     db.commit()
     return True
 
