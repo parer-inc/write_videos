@@ -8,6 +8,7 @@ from methods.connection import get_redis, get_cursor
 
 r = get_redis()
 
+
 def write_videos(data):
     """Write videos into database (table videos)
        data must be a 2d array - [n][13]"""
@@ -31,7 +32,7 @@ def write_videos(data):
     except Exception as error:
         print(error)
         # LOG
-        return False
+        return "Duplicate entry" in error
         # sys.exit("Error:Failed writing new videos to db")
     db.commit()
     return True
